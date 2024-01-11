@@ -2,7 +2,7 @@ import 'package:flutter/cupertino.dart';
 import 'package:get/get.dart';
 import 'package:supabase_flutter/supabase_flutter.dart';
 
-class EditNoteController extends GetxController {
+class EditBattleRequestController extends GetxController {
   RxBool isLoading = false.obs;
   RxBool isHidden = true.obs;
   TextEditingController battleStatus = TextEditingController();

@@ -2,31 +2,17 @@
 
 import 'package:flutter/material.dart';
 import 'package:get/get.dart';
+import 'package:ia05_07_battlesearcher/app/data/models/battlestate.dart';
+import 'package:ia05_07_battlesearcher/app/data/models/poketeam.dart';
+import 'package:ia05_07_battlesearcher/app/modules/edit_battle_request/controllers/edit_battle_request_controller.dart';
 import 'package:ia05_07_battlesearcher/app/modules/home/controllers/home_controller.dart';
 import 'package:ia05_07_battlesearcher/app/modules/home/views/home_view.dart';
 
-import '../controllers/edit_note_controller.dart';
-
-class BattleState {
-  const BattleState(this.id, this.name);
-
-  final String name;
-  final int id;
-}
-
-class EditNoteView extends GetView<EditNoteController> {
+class EditBattleRequestView extends GetView<EditBattleRequestController> {
   PokeTeam opponentTeam = Get.arguments;
   HomeController homeC = Get.find();
 
-  List<BattleState> battleStates = <BattleState>[
-    const BattleState(0, "Pending"),
-    const BattleState(1, "In progress"),
-    const BattleState(2, "Won"),
-    const BattleState(3, "Lost"),
-    const BattleState(4, "Cancelled")
-  ];
-
-  EditNoteView({super.key});
+  EditBattleRequestView({super.key});
 
   @override
   Widget build(BuildContext context) {
@@ -63,26 +49,6 @@ class EditNoteView extends GetView<EditNoteController> {
                 );
               }).toList(),
             ),
-            // TextField(
-            //   controller: controller.titleC,
-            //   decoration: const InputDecoration(
-            //     labelText: "Title",
-            //     border: OutlineInputBorder(),
-            //   ),
-            // ),
-            // const SizedBox(
-            //   height: 25,
-            // ),
-            // TextField(
-            //   controller: controller.descC,
-            //   decoration: const InputDecoration(
-            //     labelText: "Description",
-            //     border: OutlineInputBorder(),
-            //   ),
-            // ),
-            // const SizedBox(
-            //   height: 20,
-            // ),
             Obx(() => ElevatedButton(
                 onPressed: () async {
                   if (controller.isLoading.isFalse) {

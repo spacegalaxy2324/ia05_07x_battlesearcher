@@ -3,16 +3,17 @@
 import 'package:flutter/material.dart';
 
 import 'package:get/get.dart';
+import 'package:ia05_07_battlesearcher/app/data/models/battlestatusstyle.dart';
 import 'package:ia05_07_battlesearcher/app/modules/home/controllers/home_controller.dart';
 import 'package:ia05_07_battlesearcher/app/modules/home/views/home_view.dart';
 import 'package:ia05_07_battlesearcher/app/routes/app_pages.dart';
 
-import '../controllers/add_note_controller.dart';
+import '../controllers/add_battle_request_controller.dart';
 
-class AddNoteView extends GetView<AddNoteController> {
+class AddBattleRequestView extends GetView<AddBattleRequestController> {
   HomeController homeC = Get.find();
 
-  AddNoteView({super.key}); // get controller from another controller
+  AddBattleRequestView({super.key}); // get controller from another controller
   @override
   Widget build(BuildContext context) {
     return Scaffold(

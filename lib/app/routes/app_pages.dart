@@ -1,11 +1,11 @@
 // ignore_for_file: constant_identifier_names
 
 import 'package:get/get.dart';
+import 'package:ia05_07_battlesearcher/app/modules/add_battle_request/bindings/add_battle_request.dart';
+import 'package:ia05_07_battlesearcher/app/modules/add_battle_request/views/add_battle_request_view.dart';
 
-import 'package:ia05_07_battlesearcher/app/modules/add_note/bindings/add_note_binding.dart';
-import 'package:ia05_07_battlesearcher/app/modules/add_note/views/add_note_view.dart';
-import 'package:ia05_07_battlesearcher/app/modules/edit_note/bindings/edit_note_binding.dart';
-import 'package:ia05_07_battlesearcher/app/modules/edit_note/views/edit_note_view.dart';
+import 'package:ia05_07_battlesearcher/app/modules/edit_battle_request/bindings/edit_battle_request_binding.dart';
+import 'package:ia05_07_battlesearcher/app/modules/edit_battle_request/views/edit_battle_request_view.dart';
 import 'package:ia05_07_battlesearcher/app/modules/home/bindings/home_binding.dart';
 import 'package:ia05_07_battlesearcher/app/modules/home/views/home_view.dart';
 import 'package:ia05_07_battlesearcher/app/modules/login/bindings/login_binding.dart';
@@ -44,14 +44,14 @@ class AppPages {
       binding: ProfileBinding(),
     ),
     GetPage(
-      name: _Paths.ADD_NOTE,
-      page: () => AddNoteView(),
-      binding: AddNoteBinding(),
+      name: _Paths.ADD_BATTLE_REQUEST,
+      page: () => AddBattleRequestView(),
+      binding: AddBattleRequestBinding(),
     ),
     GetPage(
-      name: _Paths.EDIT_NOTE,
-      page: () => EditNoteView(),
-      binding: EditNoteBinding(),
+      name: _Paths.EDIT_BATTLE_REQUEST,
+      page: () => EditBattleRequestView(),
+      binding: EditBattleRequestBinding(),
     ),
   ];
 }
