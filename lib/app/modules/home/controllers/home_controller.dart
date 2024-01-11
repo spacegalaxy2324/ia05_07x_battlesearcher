@@ -1,3 +1,5 @@
+// ignore_for_file: avoid_function_literals_in_foreach_calls
+
 import 'package:get/get.dart';
 import 'package:supabase_flutter/supabase_flutter.dart';
 
