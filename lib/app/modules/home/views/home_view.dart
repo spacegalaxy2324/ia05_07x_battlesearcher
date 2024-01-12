@@ -3,6 +3,7 @@
 import 'package:flutter/material.dart';
 import 'package:get/get.dart';
 import 'package:ia05_07_battlesearcher/app/data/models/battlestatusstyle.dart';
+import 'package:ia05_07_battlesearcher/app/modules/avatar/avatar_view.dart';
 import 'package:ia05_07_battlesearcher/app/routes/app_pages.dart';
 import 'package:google_fonts/google_fonts.dart';
 
@@ -27,12 +28,14 @@ class HomeView extends GetView<HomeController> {
           ),
           actions: [
             Padding(
-              padding: const EdgeInsets.only(right: 10.0),
-              child: IconButton(
+              padding: const EdgeInsets.only(right: 20.0),
+              child: IconButton.filledTonal(
+                padding: EdgeInsets.zero,
+                constraints: BoxConstraints(),
                 onPressed: () async {
                   Get.toNamed(Routes.PROFILE);
                 },
-                icon: const Icon(Icons.account_circle),
+                icon: Avatar(onUpload: (_) {}, size: 30.0),
               ),
             )
           ],

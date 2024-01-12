@@ -11,6 +11,8 @@ class ProfileController extends GetxController {
   TextEditingController emailC = TextEditingController();
   TextEditingController passwordC = TextEditingController();
 
+  RxString avatarUrl = "".obs;
+
   //Pokemon Selectors
   TextEditingController pkmn1C = TextEditingController();
   RxString pkmn1CId = "0".obs;
