@@ -26,8 +26,8 @@ class ProfileView extends GetView<ProfileController> {
         content: Text(error.message),
       );
     } catch (error) {
-      SnackBar(
-        content: const Text('Unexpected error occurred'),
+      const SnackBar(
+        content: Text('Unexpected error occurred'),
       );
     }
     controller.avatarUrl.value = imageUrl;

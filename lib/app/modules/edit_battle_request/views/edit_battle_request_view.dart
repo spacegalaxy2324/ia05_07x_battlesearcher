@@ -26,40 +26,39 @@ class EditBattleRequestView extends GetView<EditBattleRequestController> {
         body: ListView(
           padding: const EdgeInsets.all(20),
           children: [
-            Text(
-              opponentTeam.userName.value,
-              style: Theme.of(context).textTheme.headlineLarge,
+            Center(
+              child: Text(
+                opponentTeam.userName.value,
+                style: Theme.of(context).textTheme.headlineLarge,
+              ),
             ),
             teamToImage(
+              alignment: MainAxisAlignment.center,
               teamList: List.from(opponentTeam.team.value),
               imageSize: 50.0,
             ),
-            DropdownButton<BattleState>(
-              value: selectedBattleState,
-              onChanged: (newValue) async {
-                await controller.updateBattle(
-                    newValue!.id, opponentTeam.id.value);
-                homeC.getBattles();
-                Get.back();
-              },
-              items: battleStates.map((BattleState bs) {
-                return DropdownMenuItem<BattleState>(
-                  value: bs,
-                  child: Text(bs.name),
-                );
-              }).toList(),
-            ),
-            Obx(() => ElevatedButton(
-                onPressed: () async {
-                  if (controller.isLoading.isFalse) {
-                    await homeC.getBattles();
+            Column(
+              children: [
+                DropdownButton<BattleState>(
+                  value: selectedBattleState,
+                  onChanged: (newValue) async {
+                    await controller.updateBattle(
+                        newValue!.id, opponentTeam.id.value);
+                    homeC.getBattles();
                     Get.back();
-
-                    controller.isLoading.value = false;
-                  }
-                },
-                child: Text(
-                    controller.isLoading.isFalse ? "Edit note" : "Loading...")))
+                  },
+                  items: battleStates.map((BattleState bs) {
+                    return DropdownMenuItem<BattleState>(
+                      value: bs,
+                      child: Text(bs.name),
+                    );
+                  }).toList(),
+                ),
+                const SizedBox(height: 20.0),
+                if (controller.isLoading.isTrue)
+                  const CircularProgressIndicator()
+              ],
+            ),
           ],
         ));
   }

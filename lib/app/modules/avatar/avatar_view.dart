@@ -2,13 +2,14 @@ import 'package:flutter/material.dart';
 import 'package:image_picker/image_picker.dart';
 import 'package:supabase_flutter/supabase_flutter.dart';
 
+// ignore: must_be_immutable
 class Avatar extends StatefulWidget {
   Avatar({
     super.key,
     this.imageUrl,
     required this.onUpload,
-    bool? this.buttonUpload = false,
-    double? this.size = 150.0,
+    this.buttonUpload = false,
+    this.size = 150.0,
   });
 
   String? imageUrl;
@@ -17,6 +18,7 @@ class Avatar extends StatefulWidget {
   final double? size;
 
   @override
+  // ignore: library_private_types_in_public_api
   _AvatarState createState() => _AvatarState();
 }
 
@@ -28,6 +30,7 @@ class _AvatarState extends State<Avatar> {
   @override
   void initState() {
     super.initState();
+    // ignore: unused_local_variable
     Future<String> fetchImage = getImageFromUser().then((value) {
       WidgetsBinding.instance.addPostFrameCallback((_) {
         setState(() {
@@ -59,25 +62,23 @@ class _AvatarState extends State<Avatar> {
               alignment: Alignment.bottomRight, // Just changed this line
               children: [
                 Container(
-                  decoration: BoxDecoration(
+                  decoration: const BoxDecoration(
                     shape: BoxShape.circle,
                     // color: Theme.of(context).colorScheme.primary
                   ),
                   width: widget.size,
                   height: widget.size,
-                  child: Container(
-                    child: Center(
-                        child: Icon(
-                      Icons.person,
-                      size: widget.size,
-                      color: Theme.of(context).colorScheme.primary,
-                    )),
-                  ),
+                  child: Center(
+                      child: Icon(
+                    Icons.person,
+                    size: widget.size,
+                    color: Theme.of(context).colorScheme.primary,
+                  )),
                 ),
                 if (widget.buttonUpload == true)
                   IconButton.filled(
                     onPressed: _isLoading ? null : _upload,
-                    icon: Icon(Icons.add_a_photo_outlined),
+                    icon: const Icon(Icons.add_a_photo_outlined),
                   ),
               ])
         else
@@ -102,7 +103,7 @@ class _AvatarState extends State<Avatar> {
                 if (widget.buttonUpload == true)
                   IconButton.filled(
                     onPressed: _isLoading ? null : _upload,
-                    icon: Icon(Icons.add_a_photo_outlined),
+                    icon: const Icon(Icons.add_a_photo_outlined),
                   ),
               ]),
       ],
@@ -160,7 +161,7 @@ class _AvatarState extends State<Avatar> {
 
     setState(() {
       widget.imageUrl = imageUrlResponse;
-      print(widget.imageUrl);
+      //print(widget.imageUrl);
       _isLoading = false;
     });
   }

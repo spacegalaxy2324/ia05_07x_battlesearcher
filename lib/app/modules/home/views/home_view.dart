@@ -31,7 +31,7 @@ class HomeView extends GetView<HomeController> {
               padding: const EdgeInsets.only(right: 20.0),
               child: IconButton.filledTonal(
                 padding: EdgeInsets.zero,
-                constraints: BoxConstraints(),
+                constraints: const BoxConstraints(),
                 onPressed: () async {
                   Get.toNamed(Routes.PROFILE);
                 },
@@ -151,14 +151,20 @@ class battleRequested extends StatelessWidget {
 }
 
 class teamToImage extends StatelessWidget {
-  const teamToImage({super.key, required this.teamList, this.imageSize = 30.0});
+  const teamToImage(
+      {super.key,
+      required this.teamList,
+      this.imageSize = 30.0,
+      this.alignment = MainAxisAlignment.start});
 
   final List<String> teamList;
   final double imageSize;
+  final MainAxisAlignment alignment;
 
   @override
   Widget build(BuildContext context) {
     return Row(
+        mainAxisAlignment: alignment,
         children: teamList
             .map((item) => Image.network(
                   'https://fnpdkywuecflignysqdi.supabase.co/storage/v1/object/public/icons/$item.png',

@@ -14,8 +14,9 @@ class AddBattleRequestController extends GetxController {
   Future<void> getAllUsers() async {
     isLoading.value = true;
     //get user id before get all notes data
-    var teamRegistry =
-        await client.from("profiles").select("id, username, teams ( team )");
+    var teamRegistry = await client
+        .from("profiles")
+        .select("id, username, avatar_url, teams ( team )");
 
     availableOpponents.clear();
 
@@ -24,7 +25,8 @@ class AddBattleRequestController extends GetxController {
         availableOpponents[element["id"]] = PokeTeamReduced(
             id: element["id"],
             userName: element["username"],
-            team: element["teams"]["team"]);
+            team: element["teams"]["team"],
+            avatar: element["avatar_url"] ?? '');
         //print(availableOpponents.toString());
       }
     });

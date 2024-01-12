@@ -18,7 +18,7 @@ class AddBattleRequestView extends GetView<AddBattleRequestController> {
   Widget build(BuildContext context) {
     return Scaffold(
       appBar: AppBar(
-        title: const Text('Add Note'),
+        title: const Text('Request battle'),
         centerTitle: true,
       ),
       body: FutureBuilder(
@@ -71,7 +71,8 @@ class AddBattleRequestView extends GetView<AddBattleRequestController> {
                                     Theme.of(context).colorScheme.onPrimary,
                                 iconColor:
                                     Theme.of(context).colorScheme.onPrimary,
-                                leading: bss.statusIcon,
+                                leading: TrainerProfile(
+                                    controller: controller, teamUser: teamUser),
                                 title: Text(controller
                                     .availableOpponents[teamUser]
                                     .userName
@@ -90,5 +91,38 @@ class AddBattleRequestView extends GetView<AddBattleRequestController> {
                   ));
           }),
     );
+  }
+}
+
+class TrainerProfile extends StatelessWidget {
+  const TrainerProfile({
+    super.key,
+    required this.controller,
+    required this.teamUser,
+  });
+
+  final AddBattleRequestController controller;
+  final String teamUser;
+
+  @override
+  Widget build(BuildContext context) {
+    if (controller.availableOpponents[teamUser].avatar.value != "") {
+      return Container(
+        width: 30,
+        height: 30,
+        clipBehavior: Clip.antiAlias,
+        decoration: const BoxDecoration(
+          shape: BoxShape.circle,
+        ),
+        child: Image.network(
+          controller.availableOpponents[teamUser].avatar.value,
+          width: 30,
+          height: 30,
+          fit: BoxFit.cover,
+        ),
+      );
+    } else {
+      return const Icon(Icons.person_pin_circle_rounded);
+    }
   }
 }
